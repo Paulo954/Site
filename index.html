@@ -1,0 +1,371 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Fortress of Tech</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: hero azul com fotos inclinadas, faixa amarela de marcas, vitrine de cards em blocos de cor (uma cor por categoria) com borda grossa e sombra dura. */
+:root{
+  --bg:#EEF1FF;
+  --surface:#FFFFFF;
+  --ink:#15132B;
+  --muted:#575577;
+  --edge:#15132B;
+  --chip:#E1E5FF;
+  --blue:#2F3CFF;
+  --yellow:#FFD400;
+  --orange:#FF7A1A;
+  --cyan:#19C6FF;
+  --pink:#FF5C9E;
+  --lilac:#B49BFF;
+  --green:#7BE05A;
+  --on-color:#15132B;
+  --font-display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --font-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#100F1E;--surface:#1B1930;--ink:#F4F2FF;--muted:#ABA8CE;--edge:#E9E6FF;--chip:#26233F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#100F1E;--surface:#1B1930;--ink:#F4F2FF;--muted:#ABA8CE;--edge:#E9E6FF;--chip:#26233F;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.top :focus-visible,.tray :focus-visible{outline-color:#fff}
+
+/* topo + hero */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--blue)}
+.top{background:var(--blue);color:#fff;overflow:hidden}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{font-family:var(--font-display);font-size:25px;font-weight:800;letter-spacing:-.01em;line-height:1}
+.bar nav{display:flex;gap:10px;font-size:14px;font-weight:700}
+.bar nav a{text-decoration:none;border:2px solid #fff;border-radius:999px;padding:6px 14px}
+.bar nav a:hover{background:#fff;color:var(--blue)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding-block:20px 44px}
+.hero h1{font-size:clamp(40px,7.4vw,78px);line-height:.98;font-weight:800;letter-spacing:-.025em}
+.hero mark{display:inline-block;color:var(--on-color);padding:0 .14em;border-radius:12px;transform:rotate(-1.5deg);margin-block:2px}
+.hero mark.y{background:var(--yellow)}
+.hero mark.p{background:var(--pink);transform:rotate(1.2deg)}
+.hero mark.c{background:var(--cyan)}
+.hero p{margin:16px 0 0;font-size:17px;max-width:46ch;color:#E4E7FF}
+.cta{display:inline-block;margin-top:22px;background:var(--yellow);color:var(--on-color);border:2.5px solid #0B0A14;border-radius:14px;padding:13px 22px;font-weight:700;font-size:16px;text-decoration:none;box-shadow:4px 4px 0 #0B0A14}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 #0B0A14}
+.collage{position:relative;height:clamp(260px,38vw,390px)}
+.collage img{position:absolute;width:44%;aspect-ratio:4/5;object-fit:cover;border:5px solid #fff;border-radius:14px;box-shadow:6px 6px 0 #0B0A14;background:#fff}
+.collage .a{left:2%;top:4%;transform:rotate(-7deg)}
+.collage .b{right:4%;top:0;transform:rotate(6deg)}
+.collage .c{left:27%;bottom:0;transform:rotate(-2deg);z-index:2}
+.collage .stamp{position:absolute;right:0;bottom:8%;z-index:3;background:var(--yellow);color:var(--on-color);border:2.5px solid #0B0A14;border-radius:16px;padding:8px 14px;transform:rotate(8deg);font-family:var(--font-display);font-weight:800;font-size:clamp(15px,2.4vw,22px);line-height:1.1;text-align:center;box-shadow:4px 4px 0 #0B0A14}
+.collage .stamp small{display:block;font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+
+/* faixa de marcas */
+.marq{background:var(--yellow);color:#15132B;border-block:3px solid #0B0A14;overflow:hidden;white-space:nowrap}
+.marq .track{display:inline-flex;gap:26px;padding-block:11px;animation:slide 30s linear infinite;font-family:var(--font-display);font-weight:800;font-size:19px;align-items:center}
+.marq .track span{display:inline-flex;align-items:center;gap:26px}
+.marq i{width:12px;height:12px;display:inline-block;transform:rotate(45deg);border:2px solid #0B0A14}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marq .track{animation:none}}
+
+/* filtros */
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:2.5px solid var(--edge)}
+.filters .wrap{display:flex;flex-direction:column;gap:10px;padding-block:12px}
+.tools{display:flex;gap:10px;flex-wrap:wrap}
+.tools input,.tools select{background:var(--surface);color:var(--ink);border:2.5px solid var(--edge);border-radius:12px;padding:9px 14px;font:inherit;min-width:0}
+.tools input{flex:1 1 200px}
+.tools select{flex:0 1 190px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
+.chip{flex:none;display:inline-flex;align-items:center;gap:8px;border:2.5px solid var(--edge);background:var(--surface);border-radius:999px;padding:6px 14px 6px 10px;font-size:14px;font-weight:700}
+.chip::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--c);border:2px solid var(--edge)}
+.chip small{font-size:12px;opacity:.7;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--c);color:var(--on-c,var(--on-color));box-shadow:3px 3px 0 var(--edge)}
+.chip[aria-pressed="true"]::before{background:var(--surface)}
+
+/* vitrine */
+main{padding-block:28px 130px}
+.count{font-weight:700;margin:0 0 18px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px 22px}
+.card{background:var(--surface);border:2.5px solid var(--edge);border-radius:20px;box-shadow:6px 6px 0 var(--c);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .ph{background:var(--c);padding:12px;position:relative;border-bottom:2.5px solid var(--edge)}
+.card .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border:2.5px solid var(--edge);border-radius:12px;background:#fff}
+.card .tag{position:absolute;left:4px;top:4px;background:#fff;color:#15132B;border:2.5px solid #15132B;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;transform:rotate(-4deg)}
+.card .body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:7px;flex:1}
+.brand-line{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+.brand-line::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c);border:2px solid var(--edge);flex:none}
+.card h3{font-size:21px;line-height:1.08;font-weight:800;letter-spacing:-.01em}
+.card p{margin:0;color:var(--muted);font-size:13.5px}
+.models{font-size:12.5px;background:var(--chip);border-radius:10px;padding:8px 10px;color:var(--ink)}
+.buy{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px}
+.price{background:#0B0A14;color:#fff;border-radius:12px;padding:6px 12px 7px;transform:rotate(-2deg);font-family:var(--font-display);font-weight:800;font-size:28px;line-height:1;font-variant-numeric:tabular-nums;border:2px solid var(--edge)}
+.price small{font-size:14px;margin-right:3px;opacity:.8}
+.add{background:var(--c);color:var(--on-color);border:2.5px solid var(--edge);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px;white-space:nowrap;box-shadow:3px 3px 0 var(--edge)}
+.add:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--edge)}
+.add:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--edge)}
+.empty{padding:48px 0;text-align:center;color:var(--muted);font-weight:700}
+
+/* bandeja do pedido */
+.tray{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--yellow);color:#15132B;border-top:3px solid #0B0A14;
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tray span{font-size:14px;font-weight:700}
+.tray strong{font-family:var(--font-display);font-size:26px;font-weight:800;margin-left:8px}
+.tray .open{background:#0B0A14;color:#fff;border:0;border-radius:12px;padding:11px 18px;font-weight:700}
+.sheet{position:fixed;inset:0;z-index:70;background:rgba(10,8,30,.65);display:flex;align-items:flex-end;justify-content:center}
+.panel{background:var(--surface);color:var(--ink);width:min(560px,100%);max-height:88%;overflow:auto;border:3px solid var(--edge);border-bottom:0;border-radius:22px 22px 0 0;
+  padding:20px max(18px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
+.panel header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.panel h2{font-size:30px;font-weight:800}
+.close{background:var(--pink);color:#15132B;border:2.5px solid var(--edge);border-radius:12px;padding:6px 14px;font-weight:700}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-bottom:2px dashed var(--edge)}
+.line b{font-weight:700}
+.line .sub{color:var(--muted);font-size:13px}
+.qty{display:inline-flex;align-items:center;gap:10px;grid-column:1;margin-top:4px}
+.qty button{width:30px;height:30px;border-radius:10px;border:2.5px solid var(--edge);background:var(--cyan);color:#15132B;font-weight:800}
+.qty span{min-width:18px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700}
+.line .lt{grid-row:1;grid-column:2;font-variant-numeric:tabular-nums;font-weight:700;text-align:right}
+.total{display:flex;justify-content:space-between;font-family:var(--font-display);font-size:30px;font-weight:800;padding:16px 0 12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.actions button,.actions a{flex:1 1 150px;text-align:center;text-decoration:none;border-radius:12px;padding:12px 14px;font-weight:700;border:2.5px solid var(--edge);background:var(--surface);color:var(--ink)}
+.actions .primary{background:var(--green);color:#15132B;box-shadow:3px 3px 0 var(--edge)}
+.actions button:disabled{opacity:.45}
+.note{color:var(--muted);font-size:13px;margin:10px 0 0}
+
+footer{background:#0B0A14;color:#B9B6DC;padding-block:34px 110px;font-size:13.5px;position:relative}
+footer::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:linear-gradient(90deg,var(--yellow) 0 16.6%,var(--orange) 0 33.3%,var(--cyan) 0 50%,var(--pink) 0 66.6%,var(--lilac) 0 83.3%,var(--green) 0)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:space-between}
+footer b{font-family:var(--font-display);font-size:22px;font-weight:800;color:#fff}
+footer p{margin:4px 0 0;max-width:52ch}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:18px}
+  .collage{height:clamp(250px,62vw,340px)}
+}
+@media (max-width:560px){
+  .bar nav{display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}
+  .card{border-radius:16px;box-shadow:4px 4px 0 var(--c)}
+  .card .ph{padding:8px}
+  .card h3{font-size:17px}
+  .card .body{padding:10px 10px 12px}
+  .card p{font-size:12.5px}
+  .price{font-size:23px;padding:5px 9px 6px}
+  .add{padding:8px 10px;font-size:13px}
+  .buy{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:no-preference){
+  .card,.add,.cta{transition:transform .12s ease,box-shadow .12s ease}
+  .card:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--c)}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#catalogo" aria-label="Fortress of Tech">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 3h6v4h4V3h6v4h4V3h6v15c0 6.4-5.4 10.4-13 12.5C8.4 28.4 3 24.4 3 18z" fill="#FFD400" stroke="#0B0A14" stroke-width="2" stroke-linejoin="round"/><path d="M17.5 8.5 10.5 17.5h4.500l-1 6 7-9h-4.500z" fill="#2F3CFF"/></svg>
+        <b>Fortress of Tech</b>
+      </a>
+      <nav aria-label="Seções"><a href="#catalogo">Catálogo</a><a href="#contato">Contato</a></nav>
+    </div>
+    <div class="hero">
+      <div>
+        <h1><mark class="y">Bateria cheia,</mark> <mark class="p">som alto,</mark> <mark class="c">tela protegida.</mark></h1>
+        <p>Power banks, carregadores, cabos, fones e películas das marcas Espada, Lehmox, A'Gold e Hrebos. Escolha, monte o pedido e fale com a loja.</p>
+        <a class="cta" href="#catalogo">Ver o catálogo</a>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <img class="a" src="pb-30000.jpg" alt="">
+        <img class="b" src="fone-hrebos.jpg" alt="">
+        <img class="c" src="carg-turbo.jpg" alt="">
+        <div class="stamp"><small>Preços de</small>R$ 10 a R$ 150</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true">
+  <div class="track">
+    <span>Espada<i style="background:#FF5C9E"></i>Lehmox<i style="background:#19C6FF"></i>A'Gold<i style="background:#FF7A1A"></i>Hrebos<i style="background:#B49BFF"></i>Power banks<i style="background:#7BE05A"></i>Carregadores<i style="background:#FF5C9E"></i>Cabos<i style="background:#19C6FF"></i>Fones<i style="background:#FF7A1A"></i>Películas<i style="background:#B49BFF"></i></span>
+    <span>Espada<i style="background:#FF5C9E"></i>Lehmox<i style="background:#19C6FF"></i>A'Gold<i style="background:#FF7A1A"></i>Hrebos<i style="background:#B49BFF"></i>Power banks<i style="background:#7BE05A"></i>Carregadores<i style="background:#FF5C9E"></i>Cabos<i style="background:#19C6FF"></i>Fones<i style="background:#FF7A1A"></i>Películas<i style="background:#B49BFF"></i></span>
+  </div>
+</div>
+
+<div class="filters" id="catalogo">
+  <div class="wrap">
+    <div class="tools">
+      <input id="q" type="search" placeholder="Buscar produto, marca ou modelo" aria-label="Buscar">
+      <select id="sort" aria-label="Ordenar">
+        <option value="rel">Ordem do catálogo</option>
+        <option value="asc">Menor preço</option>
+        <option value="desc">Maior preço</option>
+      </select>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Categorias"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>Nenhum produto encontrado. Tente outro termo ou escolha “Todos”.</div>
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <div><b>Fortress of Tech</b><p>Catálogo de tecnologia e acessórios. Preços em reais, sujeitos a confirmação de estoque no momento do pedido.</p></div>
+    <div id="contactBox"><b>Fazer pedido</b><p>Monte a lista no botão “Ver pedido” e envie para a loja.</p></div>
+  </div>
+</footer>
+
+<div class="tray" id="tray">
+  <div><span id="trayCount">Nenhum item no pedido</span><strong id="trayTotal"></strong></div>
+  <button class="open" id="openCart" type="button">Ver pedido</button>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="ptitle">
+    <header><h2 id="ptitle">Seu pedido</h2><button class="close" id="closeCart" type="button">Fechar</button></header>
+    <div id="lines"></div>
+    <div class="total"><span>Total</span><span id="sum"></span></div>
+    <div class="actions">
+      <button class="primary" id="copy" type="button">Copiar pedido</button>
+      <a id="wa" href="#" target="_blank" rel="noopener" hidden>Enviar no WhatsApp</a>
+      <button id="clear" type="button">Limpar</button>
+    </div>
+    <p class="note" id="copyNote">O texto do pedido é copiado para você colar numa conversa com a loja.</p>
+  </div>
+</div>
+
+<script>
+/* Para ativar o botão de WhatsApp, coloque o número com DDI e DDD, só dígitos. Ex.: "5581999999999" */
+var WHATSAPP_NUMBER = "";
+
+var CATS = ["Todos","Power banks","Carregadores","Cabos","Fones e áudio","Películas","Outros"];
+var COLOR = {"Todos":"var(--blue)","Power banks":"var(--yellow)","Carregadores":"var(--orange)","Cabos":"var(--cyan)","Fones e áudio":"var(--pink)","Películas":"var(--lilac)","Outros":"var(--green)"};
+var P = [
+  {id:"pb5",  cat:"Power banks", brand:"Espada", name:"Power Bank 5.000 mAh", spec:"Modelo BTE-03E. 2,1 A, cabos integrados (USB-A, Lightning e USB-C).", price:55, img:"pb-5000.jpg"},
+  {id:"pb10", cat:"Power banks", brand:"Espada", name:"Power Bank 10.000 mAh", spec:"Modelo BTE-90E. Saída máxima 3,1 A, display de carga e cabos integrados.", price:80, img:"pb-10000.jpg"},
+  {id:"pb20", cat:"Power banks", brand:"Espada", name:"Power Bank 20.000 mAh", spec:"Modelo BTE-02E1. 3,1 A, display digital e cabo embutido.", price:100, img:"pb-20000.jpg"},
+  {id:"pb30", cat:"Power banks", brand:"Espada", name:"Power Bank 30.000 mAh Turbo", spec:"Modelo BTE-46E. Carga rápida de 22,5 W, display digital e cordão.", price:150, tag:"Maior capacidade", img:"pb-30000.jpg"},
+  {id:"c25", cat:"Carregadores", brand:"Lehmox", name:"Carregador 25 W com cabo", spec:"Fonte USB-C de 25 W com cabo USB-C para Lightning.", price:50, img:"carg-25w.jpg"},
+  {id:"c492", cat:"Carregadores", brand:"Lehmox", name:"Carregador rápido LE-492", spec:"Saída de 4,1 A com entrada USB. Versão Tipo-C; também existe a versão micro USB.", price:30, img:"carg-le492.jpg"},
+  {id:"ca21", cat:"Carregadores", brand:"A'Gold", name:"Carregador rápido CA21-2", spec:"Duas portas USB, 4,1 A, kit para iOS.", price:30, img:"carg-ca21.jpg"},
+  {id:"cturbo", cat:"Carregadores", brand:"A'Gold Pro", name:"Carregador Turbo USB-C", spec:"Fonte USB-C de carga rápida com cabo USB-C.", price:60, img:"carg-turbo.jpg"},
+  {id:"kit519", cat:"Carregadores", brand:"Lehmox", name:"Kit carregador LE-519-2", spec:"Fonte de 3,1 A com cabo micro USB.", price:20, img:"kit-carregador.jpg"},
+  {id:"cuni", cat:"Carregadores", brand:"Linha Premium", name:"Carregador portátil universal para notebook", spec:"8 conectores trocáveis. Saídas de 12 a 24 V, até 4,5 A.", price:50, tag:"Notebook", img:"carregador-universal.jpg"},
+  {id:"cdados", cat:"Cabos", brand:"Lehmox", name:"Cabo de dados rápido 5.1 A", spec:"1 metro, entrada USB. Escolha a versão iOS ou Tipo-C.", price:20, img:"cabo-dados.jpg"},
+  {id:"cusbl", cat:"Cabos", brand:"Cabo 1 m", name:"Cabo USB-C para Lightning", spec:"1 metro, na caixa.", price:20, img:"cabo-usbc-lightning.jpg"},
+  {id:"c478", cat:"Cabos", brand:"Lehmox", name:"Cabo USB-C para USB-C LE-478", spec:"1 metro. Compatível com a linha iPhone 15.", price:25, img:"cabo-le478.jpg"},
+  {id:"cb102", cat:"Cabos", brand:"A'Gold", name:"Cabo Turbo 30 W CB102", spec:"Tipo-C para iOS, 1 metro, carregamento rápido de até 30 W.", price:25, img:"cabo-cb102.jpg"},
+  {id:"flehmox", cat:"Fones e áudio", brand:"Lehmox", name:"Fone sem fio Bluetooth 5.3", spec:"Estéreo, estojo com display de bateria.", price:35, img:"fone-lehmox.jpg"},
+  {id:"fba3", cat:"Fones e áudio", brand:"A'Gold", name:"Fone de ouvido sem fio FN-BA3", spec:"Bluetooth 5.3, até 6 horas de conversa.", price:50, img:"fone-agold-ba3.jpg"},
+  {id:"fhrebos", cat:"Fones e áudio", brand:"Hrebos Premium", name:"Fone sem fio EB-219", spec:"Earbuds wireless com estojo de carga.", price:60, img:"fone-hrebos.jpg"},
+  {id:"fopen", cat:"Fones e áudio", brand:"A'Gold Pro", name:"Fone open-ear sem fio", spec:"Modelo aberto que não entra no canal do ouvido. Bluetooth 5.3.", price:70, img:"fone-agold-openear.jpg"},
+  {id:"mic", cat:"Fones e áudio", brand:"A'Gold", name:"Microfone sem fio 2 em 1", spec:"Modelo MCF-07. Dois microfones de lapela e receptor USB-C. Plug and play.", price:35, img:"microfone.jpg"},
+  {id:"pvidro", cat:"Películas", brand:"3D", name:"Película de vidro 3D", spec:"Vidro com borda preta que cobre a tela inteira.", models:"Alguns modelos em estoque: K10 2017, S20 FE, A01, A01 Core, Note 50, Note 60, G05, M52, RM A2, One Vision.", price:10, tag:"Vários modelos", img:"pelicula-vidro.jpg"},
+  {id:"ppriv", cat:"Películas", brand:"Privacidade", name:"Película de privacidade", spec:"Escurece a tela para quem olha de lado. Vários modelos de iPhone e Android.", models:"Informe o modelo do seu aparelho ao pedir.", price:20, img:"pelicula-privacidade.jpg"},
+  {id:"hair", cat:"Outros", brand:"Lehmox", name:"Máquina de cabelo profissional", spec:"Modelo LEY-1548. Aparador com lâmina ajustável, bateria de 1.200 mAh e carga por USB.", price:25, img:"maquina-cabelo.jpg"}
+];
+
+var brl = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL",minimumFractionDigits:2});
+var $ = function(id){return document.getElementById(id)};
+var state = {cat:"Todos", q:"", sort:"rel", cart:{}};
+try{ var saved = JSON.parse(localStorage.getItem("fot-cart")||"{}"); if(saved && typeof saved==="object") state.cart = saved; }catch(e){}
+function persist(){ try{ localStorage.setItem("fot-cart", JSON.stringify(state.cart)); }catch(e){} }
+function byId(id){ return P.filter(function(p){return p.id===id})[0]; }
+function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""); }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]}); }
+
+function renderChips(){
+  $("chips").innerHTML = CATS.map(function(c){
+    var n = c==="Todos" ? P.length : P.filter(function(p){return p.cat===c}).length;
+    var on = c==="Todos" ? ";--on-c:#fff" : "";
+    return '<button type="button" class="chip" style="--c:'+COLOR[c]+on+'" data-cat="'+esc(c)+'" aria-pressed="'+(state.cat===c)+'">'+esc(c)+' <small>'+n+'</small></button>';
+  }).join("");
+}
+function visible(){
+  var q = norm(state.q);
+  var list = P.filter(function(p){
+    if(state.cat!=="Todos" && p.cat!==state.cat) return false;
+    if(!q) return true;
+    return norm([p.name,p.brand,p.spec,p.cat,p.models||""].join(" ")).indexOf(q)>-1;
+  });
+  if(state.sort==="asc") list = list.slice().sort(function(a,b){return a.price-b.price});
+  if(state.sort==="desc") list = list.slice().sort(function(a,b){return b.price-a.price});
+  return list;
+}
+function renderGrid(){
+  var list = visible();
+  $("grid").innerHTML = list.map(function(p){
+    return '<article class="card" style="--c:'+COLOR[p.cat]+'"><div class="ph"><img loading="lazy" src="'+p.img+'" alt="'+esc(p.name)+'">'+(p.tag?'<span class="tag">'+esc(p.tag)+'</span>':'')+'</div>'+
+      '<div class="body"><div class="brand-line">'+esc(p.brand)+'</div><h3>'+esc(p.name)+'</h3><p>'+esc(p.spec)+'</p>'+
+      (p.models?'<div class="models">'+esc(p.models)+'</div>':'')+
+      '<div class="buy"><div class="price"><small>R$</small>'+p.price.toLocaleString("pt-BR",{minimumFractionDigits:2})+'</div>'+
+      '<button class="add" type="button" data-add="'+p.id+'">Adicionar</button></div></div></article>';
+  }).join("");
+  $("empty").hidden = list.length>0;
+  $("count").textContent = list.length + (list.length===1?" produto":" produtos") + (state.cat!=="Todos"?" em "+state.cat:"");
+}
+function cartItems(){
+  return Object.keys(state.cart).map(function(id){ var p=byId(id); return p?{p:p,n:state.cart[id]}:null; }).filter(Boolean);
+}
+function cartText(){
+  var items = cartItems(), total = 0;
+  var lines = items.map(function(it){ var t=it.p.price*it.n; total+=t; return it.n+"x "+it.p.name+" ("+it.p.brand+") - "+brl.format(t); });
+  return "Olá, Fortress of Tech! Quero fazer este pedido:\n"+lines.join("\n")+"\nTotal: "+brl.format(total);
+}
+function renderCart(){
+  var items = cartItems(), count = 0, total = 0;
+  items.forEach(function(it){ count+=it.n; total+=it.n*it.p.price; });
+  $("trayCount").textContent = count ? count+(count===1?" item no pedido":" itens no pedido") : "Nenhum item no pedido";
+  $("trayTotal").textContent = count ? brl.format(total) : "";
+  $("sum").textContent = brl.format(total);
+  $("lines").innerHTML = items.length ? items.map(function(it){
+    return '<div class="line"><div><b>'+esc(it.p.name)+'</b><div class="sub">'+esc(it.p.brand)+' · '+brl.format(it.p.price)+' cada</div></div>'+
+      '<div class="lt">'+brl.format(it.n*it.p.price)+'</div>'+
+      '<div class="qty"><button type="button" data-dec="'+it.p.id+'" aria-label="Diminuir">−</button><span>'+it.n+'</span><button type="button" data-inc="'+it.p.id+'" aria-label="Aumentar">+</button></div></div>';
+  }).join("") : '<p class="note">Seu pedido está vazio. Use “Adicionar” nos produtos.</p>';
+  $("copy").disabled = $("clear").disabled = !items.length;
+  var wa = $("wa");
+  if(WHATSAPP_NUMBER && items.length){ wa.hidden=false; wa.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(cartText()); } else { wa.hidden=true; }
+  if(WHATSAPP_NUMBER){ $("contactBox").innerHTML = '<b>Fazer pedido</b><p>WhatsApp: '+esc(WHATSAPP_NUMBER)+'</p>'; }
+  persist();
+}
+function change(id,d){ var n=(state.cart[id]||0)+d; if(n<=0) delete state.cart[id]; else state.cart[id]=n; renderCart(); }
+
+document.addEventListener("click",function(e){
+  var t = e.target.closest("button"); if(!t) return;
+  if(t.dataset.cat){ state.cat=t.dataset.cat; renderChips(); renderGrid(); }
+  else if(t.dataset.add){ change(t.dataset.add,1); t.textContent="Adicionado"; setTimeout(function(){t.textContent="Adicionar"},900); }
+  else if(t.dataset.inc){ change(t.dataset.inc,1); }
+  else if(t.dataset.dec){ change(t.dataset.dec,-1); }
+});
+$("q").addEventListener("input",function(e){ state.q=e.target.value; renderGrid(); });
+$("sort").addEventListener("change",function(e){ state.sort=e.target.value; renderGrid(); });
+$("openCart").addEventListener("click",function(){ $("sheet").hidden=false; });
+$("closeCart").addEventListener("click",function(){ $("sheet").hidden=true; });
+$("sheet").addEventListener("click",function(e){ if(e.target===$("sheet")) $("sheet").hidden=true; });
+$("clear").addEventListener("click",function(){ state.cart={}; renderCart(); });
+$("copy").addEventListener("click",function(){
+  var txt = cartText(), note = $("copyNote");
+  function ok(){ note.textContent="Pedido copiado. Cole na conversa com a loja."; }
+  function fail(){ note.textContent="Não foi possível copiar sozinho. Selecione o texto abaixo e copie."; var ta=document.createElement("textarea"); ta.value=txt; ta.rows=6; ta.style.cssText="width:100%;margin-top:8px;background:var(--bg);color:var(--ink);border:2px solid var(--edge);border-radius:10px;padding:8px;font:inherit"; note.after(ta); ta.select(); }
+  try{ navigator.clipboard.writeText(txt).then(ok,fail); }catch(e){ fail(); }
+});
+document.addEventListener("keydown",function(e){ if(e.key==="Escape") $("sheet").hidden=true; });
+
+renderChips(); renderGrid(); renderCart();
+</script>
+
+</body></html>
